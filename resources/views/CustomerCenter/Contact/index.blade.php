@@ -73,7 +73,7 @@
 
                         {{--<span class="badge badge-dot badge-danger"></span>--}}
 
-                        <a class="flexbox flex-grow gap-items text-truncate" href="#qv-user-details" data-toggle="quickview">
+                        <a class="flexbox flex-grow gap-items text-truncate" href="{{ route('CustomerCenter.Contact.Show', $contact) }}" data-toggle="">
                             <i class="fa fa-user fa-3x"></i>
 
                             <div class="media-body text-truncate">

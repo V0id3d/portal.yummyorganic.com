@@ -26,7 +26,7 @@ class LeadsController extends Controller
      */
     public function create()
     {
-        //
+        return view('CustomerCenter.Leads.create');
     }
 
     /**
@@ -37,7 +37,22 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newLead = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'website' => $request->website,
+            'address' => $request->address,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'phone' => $request->phone,
+            'source' => $request->source
+        ];
+
+        $selected_lead = Leads::create($newLead);
+
+        return redirect(route('CustomerCenter.Lead.Index'));
     }
 
     /**
@@ -46,20 +61,21 @@ class LeadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Leads $selected_lead)
     {
-        //
+        return view('CustomerCenter.Leads.show', compact('selected_lead'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Leads $selected_lead
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function edit($id)
+    public function edit(Leads $selected_lead)
     {
-        //
+        return view('CustomerCenter.Leads.edit', compact('selected_lead'));
     }
 
     /**
@@ -69,9 +85,24 @@ class LeadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Leads $selected_lead)
     {
-        //
+        $updatedLead = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'website' => $request->website,
+            'address' => $request->address,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'phone' => $request->phone,
+            'tier' => $request->tier
+        ];
+
+        $selected_lead->update($updatedLead);
+
+        return redirect(route('CustomerCenter.Lead.Index'));
     }
 
     /**

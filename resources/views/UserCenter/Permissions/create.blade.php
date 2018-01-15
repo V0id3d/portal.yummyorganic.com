@@ -27,7 +27,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" value="{{ old('name') }}">
-                                        <label>Role Name</label>
+                                        <label>Permission Name</label>
                                         @if ($errors->has('name'))
                                             <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                                         @endif

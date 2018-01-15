@@ -53,7 +53,7 @@
 
 
             <!-- Multi Level Navigation Item [Customer Center] -->
-            <li class="menu-item">
+            <li class="menu-item {{ setOpen('admin/customercenter') }}">
                 <a class="menu-link" href="#">
                     <span class="icon fa fa-users"></span>
                     <span class="title">Customer Center</span>
@@ -61,21 +61,21 @@
                 </a>
 
                 <ul class="menu-submenu">
-                    <li class="menu-item">
+                    <li class="menu-item{{ setActive('admin/customercenter/company') }}">
                         <a class="menu-link" href="{{ route('CustomerCenter.Company.Index') }}">
                             <span class="dot"></span>
                             <span class="title">Companies</span>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item{{ setActive('admin/customercenter/contact') }}">
                         <a class="menu-link" href="{{ route('CustomerCenter.Contact.Index') }}">
                             <span class="dot"></span>
                             <span class="title">Clients</span>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item{{ setActive('admin/customercenter/lead') }}">
                         <a class="menu-link" href="{{ route('CustomerCenter.Lead.Index') }}">
                             <span class="dot"></span>
                             <span class="title">Leads</span>

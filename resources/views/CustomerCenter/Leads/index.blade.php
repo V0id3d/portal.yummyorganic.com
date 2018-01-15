@@ -8,7 +8,7 @@
             </div>
 
             <div class="right gap-items-2">
-                <a class="btn btn-secondary btn-square btn-round" href="{{ route('CustomerCenter.Contact.Create') }}" data-provide="tooltip" title="" data-original-title="Add a Contact"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-secondary btn-square btn-round" href="{{ route('CustomerCenter.Lead.Create') }}" data-provide="tooltip" title="" data-original-title="Add a Contact"><i class="fa fa-plus"></i></a>
                 <a class="btn btn-secondary btn-square btn-round" href="#" data-provide="tooltip" title="" data-original-title="Settings"><i class="fa fa-gear"></i></a>
             </div>
         </div>
@@ -52,7 +52,7 @@
 
                         {{--<span class="badge badge-dot badge-danger"></span>--}}
 
-                        <a class="flexbox flex-grow gap-items text-truncate" href="#qv-user-details" data-toggle="quickview">
+                        <a class="flexbox flex-grow gap-items text-truncate" href="{{ route('CustomerCenter.Lead.Show', $lead) }}">
                             <i class="fa fa-user-o fa-3x"></i>
 
                             <div class="media-body text-truncate">
@@ -67,7 +67,7 @@
                         <div class="dropdown">
                             <a class="text-lighter" href="#" data-toggle="dropdown" aria-expanded="true"><i class="ti-more-alt rotate-90"></i></a>
                             <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; top: 19px; left: -147px; will-change: top, left;">
-                                <a class="dropdown-item" href="{{ route('CustomerCenter.Lead.Edit', $lead) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="{{ route('CustomerCenter.Lead.Edit', $lead->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"><i class="fa fa-fw fa-trash"></i> Delete</a>
                             </div>

@@ -64,9 +64,9 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Company $selected_company)
     {
-        //
+        return view('CustomerCenter.Company.show', compact('selected_company'));
     }
 
     /**

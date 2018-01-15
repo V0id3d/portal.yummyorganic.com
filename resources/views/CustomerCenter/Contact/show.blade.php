@@ -20,16 +20,12 @@
                     </header>
 
                     <div class="card-body">
-                        <form action="{{ route('CustomerCenter.Contact.Update', $selected_contact) }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('PATCH') }}
-
-
+                        <form>
 
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" value="{{ old('name', $selected_contact->name ) }}">
+                                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" value="{{ old('name', $selected_contact->name ) }}" readonly>
                                         <label>Name</label>
                                         @if ($errors->has('name'))
                                             <div class="invalid-feedback">{{ $errors->first('name') }}</div>
@@ -39,7 +35,7 @@
 
                                 <div class="col-6">
                                     <div class="form-group do-float">
-                                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ old('email', $selected_contact->email ) }}">
+                                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ old('email', $selected_contact->email ) }}" readonly>
                                         <label>E-Mail</label>
                                         @if ($errors->has('email'))
                                             <div class="invalid-feedback">{{ $errors->first('email') }}</div>
@@ -51,7 +47,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" id="phone" name="phone" value="{{ old('phone', $selected_contact->phone) }}">
+                                        <input type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" id="phone" name="phone" value="{{ old('phone', $selected_contact->phone) }}" readonly>
                                         <label>Phone</label>
                                         @if ($errors->has('phone'))
                                             <div class="invalid-feedback">{{ $errors->first('phone') }}</div>
@@ -62,7 +58,7 @@
                                 <div class="col-6">
                                     <div class="form-group do-float">
 
-                                        <select class="form-control" data-provide="selectpicker" tabindex="-98" data-live-search="true" name="company_id">
+                                        <select class="form-control" data-provide="selectpicker" tabindex="-98" data-live-search="true" name="company_id" readonly>
                                             @if(!is_null($companyList))
                                                 <option selected style="display: none;" value=""></option>
                                                 @foreach ($companyList as $company)
@@ -81,7 +77,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address" name="address" value="{{ old('address', $selected_contact->address) }}">
+                                        <input type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address" name="address" value="{{ old('address', $selected_contact->address) }}" readonly>
                                         <label>Address</label>
                                         @if ($errors->has('address'))
                                             <div class="invalid-feedback">{{ $errors->first('address') }}</div>
@@ -93,7 +89,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('address2') ? ' is-invalid' : '' }}" id="address2" name="address2" value="{{ old('address2', $selected_contact->address2) }}">
+                                        <input type="text" class="form-control{{ $errors->has('address2') ? ' is-invalid' : '' }}" id="address2" name="address2" value="{{ old('address2', $selected_contact->address2) }}" readonly>
                                         <label>Addtl.</label>
                                         @if ($errors->has('address2'))
                                             <div class="invalid-feedback">{{ $errors->first('address2') }}</div>
@@ -105,7 +101,7 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" id="city" name="city" value="{{ old('city', $selected_contact->city) }}">
+                                        <input type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" id="city" name="city" value="{{ old('city', $selected_contact->city) }}" readonly>
                                         <label>City</label>
                                         @if ($errors->has('city'))
                                             <div class="invalid-feedback">{{ $errors->first('city') }}</div>
@@ -115,7 +111,7 @@
 
                                 <div class="col-4">
                                     <div class="form-group do-float">
-                                        <input type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" id="state" name="state" value="{{ old('state', $selected_contact->state) }}">
+                                        <input type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" id="state" name="state" value="{{ old('state', $selected_contact->state) }}" readonly>
                                         <label>State</label>
                                         @if ($errors->has('state'))
                                             <div class="invalid-feedback">{{ $errors->first('state') }}</div>
@@ -125,7 +121,7 @@
 
                                 <div class="col-4">
                                     <div class="form-group do-float">
-                                        <input type="text" class="form-control{{ $errors->has('zip') ? ' is-invalid' : '' }}" id="zip" name="zip" value="{{ old('zip', $selected_contact->zip) }}">
+                                        <input type="text" class="form-control{{ $errors->has('zip') ? ' is-invalid' : '' }}" id="zip" name="zip" value="{{ old('zip', $selected_contact->zip) }}" readonly>
                                         <label>Zip</label>
                                         @if ($errors->has('zip'))
                                             <div class="invalid-feedback">{{ $errors->first('zip') }}</div>
@@ -137,7 +133,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control{{ $errors->has('notes') ? ' is-invalid' : '' }}" rows="6" name="notes">{{ old('notes', $selected_contact->notes) }}</textarea>
+                                        <textarea class="form-control{{ $errors->has('notes') ? ' is-invalid' : '' }}" rows="6" name="notes" readonly>{{ old('notes', $selected_contact->notes) }}</textarea>
                                         <label>Notes</label>
                                         @if ($errors->has('notes'))
                                             <div class="invalid-feedback">{{ $errors->first('notes') }}</div>
@@ -149,7 +145,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-primary right">
+                                        <a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Contact.Edit', $selected_contact)  }}">Edit Contact</a>
                                     </div>
 
                                 </div>

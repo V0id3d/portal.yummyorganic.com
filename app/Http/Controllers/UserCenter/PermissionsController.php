@@ -21,7 +21,7 @@ class PermissionsController extends Controller
     protected function validator(array $data, $record = null)
     {
         return Validator::make($data, [
-            'name' => (is_null($record)) ? 'required|string|max:255|unique' : 'required|string|max:255|unique:permissions,name,' . $record->id,
+            'name' => (is_null($record)) ? 'required|string|max:255|unique:permissions' : 'required|string|max:255|unique:permissions,name,' . $record->id,
             'description' => 'required|string',
         ]);
     }

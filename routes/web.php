@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/create', 'CustomerCenter\CompanyController@create')->name('CustomerCenter.Company.Create');
             Route::post('/create', 'CustomerCenter\CompanyController@store')->name('CustomerCenter.Company.Store');
             Route::get('/{selected_company}/edit', 'CustomerCenter\CompanyController@edit')->name('CustomerCenter.Company.Edit');
+            Route::get('/{selected_company}/show', "CustomerCenter\CompanyController@show")->name('CustomerCenter.Company.Show');
             Route::patch('/{selected_company}/edit', 'CustomerCenter\CompanyController@update')->name('CustomerCenter.Company.Update');
         });
 
@@ -45,6 +46,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/create', 'CustomerCenter\ContactController@create')->name('CustomerCenter.Contact.Create');
             Route::post('/create', 'CustomerCenter\ContactController@store')->name('CustomerCenter.Contact.Store');
             Route::get('/{selected_contact}/edit', 'CustomerCenter\ContactController@edit')->name('CustomerCenter.Contact.Edit');
+            Route::get('/{selected_contact}/show', "CustomerCenter\contactController@show")->name('CustomerCenter.Contact.Show');
             Route::patch('/{selected_contact}/edit', 'CustomerCenter\ContactController@update')->name('CustomerCenter.Contact.Update');
         });
 
@@ -52,7 +54,8 @@ Route::prefix('admin')->group(function () {
         route::prefix('lead')->group(function () {
             Route::get('/', 'CustomerCenter\LeadsController@index')->name('CustomerCenter.Lead.Index');
             Route::get('/create', 'CustomerCenter\LeadsController@create')->name('CustomerCenter.Lead.Create');
-            Route::post('/create', 'CustomerCenter\LeadsControllerr@store')->name('CustomerCenter.Lead.Store');
+            Route::post('/create', 'CustomerCenter\LeadsController@store')->name('CustomerCenter.Lead.Store');
+            Route::get('/{selected_lead}/show', "CustomerCenter\LeadsController@show")->name('CustomerCenter.Lead.Show');
             Route::get('/{selected_lead}/edit', 'CustomerCenter\LeadsController@edit')->name('CustomerCenter.Lead.Edit');
             Route::patch('/{selected_lead}/edit', 'CustomerCenter\LeadsController@update')->name('CustomerCenter.Lead.Update');
         });

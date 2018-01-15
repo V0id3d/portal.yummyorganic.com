@@ -66,9 +66,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Contact $selected_contact)
     {
-        //
+        $companyList = Company::all();
+
+        return view('CustomerCenter.Contact.show', compact('selected_contact', 'companyList'));
     }
 
     /**

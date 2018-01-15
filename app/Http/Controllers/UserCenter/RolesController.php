@@ -23,7 +23,7 @@ class RolesController extends Controller
     {
         return Validator::make($data, [
 //            'name' => 'required|string|max:255',
-            'name' => (is_null($record)) ? 'required|string|max:255|unique' : 'required|string|max:255|unique:roles,name,' . $record->id,
+            'name' => (is_null($record)) ? 'required|string|max:255|unique:roles' : 'required|string|max:255|unique:roles,name,' . $record->id,
             'description' => 'required|string',
         ]);
     }
