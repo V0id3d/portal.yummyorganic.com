@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::prefix('taskcenter')->group(function () {
         Route::get('/', 'TaskCenter\Projects@index')->name('TaskCenter.Index');
         Route::prefix('project')->group(function () {

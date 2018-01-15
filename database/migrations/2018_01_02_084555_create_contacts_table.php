@@ -25,7 +25,7 @@ class CreateContactsTable extends Migration
             $table->string('zip')->nullable();
             $table->string('phone')->nullable();
 
-            $table->text('notes')->nullable;
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
