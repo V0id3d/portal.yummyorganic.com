@@ -20,43 +20,51 @@
                 </header>
 
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form action="{{ route('UserCenter.Users.Store') }}" method="POST">
                         {{ csrf_field() }}
 
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name">
-                                    <label>Full Name</label>
+                                    <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" value="{{ old('name') }}">
+                                    <label>Name</label>
+                                    @if ($errors->has('name'))
+                                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="col-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="email">
+                                <div class="form-group do-float">
+                                    <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ old('email') }}">
                                     <label>Email Address</label>
+                                    @if ($errors->has('email'))
+                                        <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" value="{{ old('password') }}">
                                     <label>Password</label>
+                                    @if ($errors->has('password'))
+                                        <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+                                    @endif
                                 </div>
                             </div>
-
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password_confirmation">
+                                    <input type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}">
                                     <label>Confirm</label>
+                                    @if ($errors->has('password_confirmation'))
+                                        <div class="invalid-feedback">{{ $errors->first('password_confirmation') }}</div>
+                                    @endif
                                 </div>
                             </div>
-
-
-
                         </div>
+
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
