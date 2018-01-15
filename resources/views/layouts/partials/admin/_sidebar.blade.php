@@ -26,30 +26,31 @@
 
 
             <!-- Multi Level Navigation Item [Product Center] -->
-            <li class="menu-item">
-                <a class="menu-link" href="#">
-                    <span class="icon fa fa-barcode"></span>
-                    <span class="title">Product Center</span>
-                    <span class="arrow"></span>
-                </a>
+            {{--<li class="menu-item">--}}
+                {{--<a class="menu-link" href="#">--}}
+                    {{--<span class="icon fa fa-barcode"></span>--}}
+                    {{--<span class="title">Product Center</span>--}}
+                    {{--<span class="arrow"></span>--}}
+                {{--</a>--}}
 
-                <ul class="menu-submenu">
-                    <li class="menu-item">
-                        <a class="menu-link" href="#">
-                            <span class="dot"></span>
-                            <span class="title">Brands</span>
-                        </a>
-                    </li>
+                {{--<ul class="menu-submenu">--}}
+                    {{--<li class="menu-item">--}}
+                        {{--<a class="menu-link" href="#">--}}
+                            {{--<span class="dot"></span>--}}
+                            {{--<span class="title">Brands</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
 
-                    <li class="menu-item">
-                        <a class="menu-link" href="#">
-                            <span class="dot"></span>
-                            <span class="title">Products</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    {{--<li class="menu-item">--}}
+                        {{--<a class="menu-link" href="#">--}}
+                            {{--<span class="dot"></span>--}}
+                            {{--<span class="title">Products</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
             <!-- END Multi Level Navigation Item -->
+
 
             <!-- Multi Level Navigation Item [Customer Center] -->
             <li class="menu-item">
@@ -123,21 +124,21 @@
             <!-- END Naigation Header -->
 
             <!-- Single Navigation Item [General]-->
-            <li class="menu-item">
-                <a class="menu-link" href="#">
-                    <span class="icon fa fa-gears"></span>
-                    <span class="title">General</span>
-                </a>
-            </li>
+            {{--<li class="menu-item">--}}
+                {{--<a class="menu-link" href="#">--}}
+                    {{--<span class="icon fa fa-gears"></span>--}}
+                    {{--<span class="title">General</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <!-- End Single Navigation -->
 
             <!-- Single Navigation Item [Product Center]-->
-            <li class="menu-item">
-                <a class="menu-link" href="#">
-                    <span class="icon fa fa-barcode"></span>
-                    <span class="title">Product Center</span>
-                </a>
-            </li>
+            {{--<li class="menu-item">--}}
+                {{--<a class="menu-link" href="#">--}}
+                    {{--<span class="icon fa fa-barcode"></span>--}}
+                    {{--<span class="title">Product Center</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <!-- End Single Navigation -->
 
             <!-- Single Navigation Item [Customer Center]-->
@@ -149,7 +150,7 @@
             </li>
             <!-- End Single Navigation -->
 
-            <!-- Multi Level Navigation Item [Product Center] -->
+            <!-- Multi Level Navigation Item [Access Center] -->
             <li class="menu-item">
                 <a class="menu-link" href="#">
                     <span class="icon fa fa-lock"></span>
