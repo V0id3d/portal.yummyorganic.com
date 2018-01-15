@@ -58,7 +58,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <input type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}">
-                                        <label>Password</label>
+                                        <label>Confirm</label>
                                         @if ($errors->has('password_confirmation'))
                                             <div class="invalid-feedback">{{ $errors->first('password_confirmation') }}</div>
                                         @endif

@@ -49,7 +49,7 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="password_confirmation">
+                                    <input type="password" class="form-control" name="password_confirmation">
                                     <label>Confirm</label>
                                 </div>
                             </div>
