@@ -56,7 +56,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $newUser = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ];
+
+        User::create($newUser);
+
+        return redirect(route('UserCenter.Users.Index'));
+
     }
 
     /**
