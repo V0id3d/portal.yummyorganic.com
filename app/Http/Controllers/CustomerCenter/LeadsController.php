@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\CustomerCenter;
 
+use App\CustomerCenter\Company;
+use App\CustomerCenter\Contact;
 use App\CustomerCenter\Leads;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -114,5 +116,48 @@ class LeadsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function exportToCompany(Request $request, Leads $selected_lead)
+    {
+        $newCompany = [
+            'name' => $selected_lead->name,
+            'email' => $selected_lead->email,
+            'website' => $selected_lead->website,
+            'phone' => $selected_lead->phone,
+            'address' => $selected_lead->address,
+            'address2' => $selected_lead->address2,
+            'city' => $selected_lead->city,
+            'state' => $selected_lead->state,
+            'zip' => $selected_lead->zip,
+        ];
+
+        $newCompany = Company::create($newCompany);
+
+        return redirect(route('CustomerCenter.Company.Show', $newCompany));
+    }
+
+    public function exportToContact(Request $request, Leads $selected_lead)
+    {
+        $newContact = [
+            'name' => $selected_lead->name,
+            'email' => $selected_lead->email,
+            'website' => $selected_lead->website,
+            'phone' => $selected_lead->phone,
+            'address' => $selected_lead->address,
+            'address2' => $selected_lead->address2,
+            'city' => $selected_lead->city,
+            'state' => $selected_lead->state,
+            'zip' => $selected_lead->zip,
+        ];
+
+        $newContact = Contact::create($newContact);
+
+        return redirect(route('CustomerCenter.Contact.Show', $newContact));
+
     }
 }

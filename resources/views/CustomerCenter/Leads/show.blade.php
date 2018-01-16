@@ -21,6 +21,7 @@
 
                     <div class="card-body">
                         <form>
+                            {{ csrf_field() }}
 
                             <div class="row">
                                 <div class="col-4">
@@ -155,7 +156,13 @@
                             <div class="row">
                                 <div class="col-6 center-block">
                                     <div class="form-group">
-                                        <a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Lead.Edit', $selected_lead)  }}">Edit Lead</a>
+                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Lead.Edit', $selected_lead) }}" value="Edit Lead">
+                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Lead.CompanyConvert', $selected_lead) }}" formmethod="POST" value="Export To Company">
+                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Lead.ContactConvert', $selected_lead) }}" formmethod="POST" value="Export To Contact">
+
+
+                                        {{--<button type="submit"></button>--}}
+                                        {{--<a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Lead.Edit', $selected_lead)  }}">Edit Lead</a>--}}
                                         {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Company</a>--}}
                                         {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Contact</a>--}}
                                     </div>

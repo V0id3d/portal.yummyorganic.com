@@ -58,6 +58,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             Route::get('/{selected_lead}/show', "CustomerCenter\LeadsController@show")->name('CustomerCenter.Lead.Show');
             Route::get('/{selected_lead}/edit', 'CustomerCenter\LeadsController@edit')->name('CustomerCenter.Lead.Edit');
             Route::patch('/{selected_lead}/edit', 'CustomerCenter\LeadsController@update')->name('CustomerCenter.Lead.Update');
+            Route::post('/{selected_lead}/convert/company', 'CustomerCenter\LeadsController@exportToCompany')->name('CustomerCenter.Lead.CompanyConvert');
+            Route::post('/{selected_lead}/convert/contact', 'CustomerCenter\LeadsController@exportToContact')->name('CustomerCenter.Lead.ContactConvert');
         });
 
     });
