@@ -58,7 +58,7 @@
                                 <div class="col-6">
                                     <div class="form-group do-float">
 
-                                        <select class="form-control" data-provide="selectpicker" tabindex="-98" data-live-search="true" name="company_id" readonly>
+                                        <select class="form-control" data-provide="selectpicker" tabindex="-98" data-live-search="true" name="company_id">
                                             @if(!is_null($companyList))
                                                 <option selected style="display: none;" value=""></option>
                                                 @foreach ($companyList as $company)

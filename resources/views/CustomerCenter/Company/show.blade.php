@@ -138,7 +138,7 @@
                             <div class="row">
                                 <div class="col-6 center-block">
                                     <div class="form-group">
-                                        <a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Company.Edit', $selected_company)  }}">Edit Lead</a>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Company.Edit', $selected_company)  }}">Edit Company</a>
                                         {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Company</a>--}}
                                         {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Contact</a>--}}
                                     </div>
