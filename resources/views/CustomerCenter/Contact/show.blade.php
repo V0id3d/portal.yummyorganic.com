@@ -62,7 +62,7 @@
                                             @if(!is_null($companyList))
                                                 <option selected style="display: none;" value=""></option>
                                                 @foreach ($companyList as $company)
-                                                    <option value="{{ $company->id }}"@if(!is_null($selected_contact->company)){{ ($selected_contact->company->pluck('id')->contains($company->id) ? ' selected' : '') }}@endif>{{ $company->name }}</option>
+                                                    <option value="{{ $company->id }}"@if(!is_null($selected_contact->company)){{ ($selected_contact->company->id == $company->id ) ? ' selected' : '' }}@endif>{{ $company->name }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
