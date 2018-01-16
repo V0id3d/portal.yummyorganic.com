@@ -43,7 +43,7 @@ class ContactController extends Controller
     {
         $newContact = [
             'name' => $request->name,
-            'email' => $request->email,
+            'email' => (is_null($request->email)) ? 'no@email.com' : $request->email,
             'company_id' => $request->company_id,
             'address' => $request->address,
             'address2' => $request->address2,
