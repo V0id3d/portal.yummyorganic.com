@@ -46,7 +46,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             Route::get('/create', 'CustomerCenter\ContactController@create')->name('CustomerCenter.Contact.Create');
             Route::post('/create', 'CustomerCenter\ContactController@store')->name('CustomerCenter.Contact.Store');
             Route::get('/{selected_contact}/edit', 'CustomerCenter\ContactController@edit')->name('CustomerCenter.Contact.Edit');
-            Route::get('/{selected_contact}/show', "CustomerCenter\contactController@show")->name('CustomerCenter.Contact.Show');
+            Route::get('/{selected_contact}/show', "CustomerCenter\ContactController@show")->name('CustomerCenter.Contact.Show');
             Route::patch('/{selected_contact}/edit', 'CustomerCenter\ContactController@update')->name('CustomerCenter.Contact.Update');
         });
 
