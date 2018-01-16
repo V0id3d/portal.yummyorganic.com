@@ -138,7 +138,9 @@
                             <div class="row">
                                 <div class="col-6 center-block">
                                     <div class="form-group">
-                                        <a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Company.Edit', $selected_company)  }}">Edit Company</a>
+                                        {{--<a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Company.Edit', $selected_company)  }}">Edit Company</a>--}}
+                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Company.Edit', $selected_company) }}" value="Edit Company">
+                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Contact.Create') }}" value="Add Contact">
                                         {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Company</a>--}}
                                         {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Contact</a>--}}
                                     </div>
