@@ -8,7 +8,7 @@
             </div>
 
             <div class="right gap-items-2">
-                <a class="btn btn-secondary btn-square btn-round" href="{{ route('UserCenter.Roles.Create') }}" data-provide="tooltip" title="" data-original-title="Add a Role"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-secondary btn-square btn-round" href="{{ route('UserCenter.Users.Create') }}" data-provide="tooltip" title="" data-original-title="Add a Role"><i class="fa fa-plus"></i></a>
                 <a class="btn btn-secondary btn-square btn-round" href="#" data-provide="tooltip" title="" data-original-title="Settings"><i class="fa fa-gear"></i></a>
             </div>
         </div>
