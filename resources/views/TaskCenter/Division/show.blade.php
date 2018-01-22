@@ -107,6 +107,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" checked></td>
+                                        <td>Task Title</td>
+                                        <td><span class="badge badge-danger">Needs Attention</span></td>
+                                        <td><span>Carlos Quinones</span></td>
+                                        <td>1/31/18</td>
+                                    </tr>
                                     @if($project->tasks->isEmpty())
                                         <tr>
                                             <td colspan="100%" class="text-center">No Tasks given</td>

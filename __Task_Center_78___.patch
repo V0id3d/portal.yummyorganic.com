@@ -1,0 +1,21 @@
+Index: resources/views/TaskCenter/Division/show.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/views/TaskCenter/Division/show.blade.php	(revision 0604559dedb1193c6f24878ab00fb1dcb0eeab78)
++++ resources/views/TaskCenter/Division/show.blade.php	(revision )
+@@ -107,6 +107,13 @@
+                                     </tr>
+                                     </thead>
+                                     <tbody>
++                                    <tr>
++                                        <td><input type="checkbox" checked></td>
++                                        <td>Task Title</td>
++                                        <td><span class="badge badge-danger">Needs Attention</span></td>
++                                        <td><span>Carlos Quinones</span></td>
++                                        <td>1/31/18</td>
++                                    </tr>
+                                     @if($project->tasks->isEmpty())
+                                         <tr>
+                                             <td colspan="100%" class="text-center">No Tasks given</td>
