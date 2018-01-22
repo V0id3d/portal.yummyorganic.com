@@ -115,7 +115,7 @@
                                         <td>1/31/18</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" checked></td>
+                                        <td><i class="fa fa-check"></i></td>
                                         <td>Quit Cortex</td>
                                         <td><span class="badge badge-success">Complete</span></td>
                                         <td><span>Carlos Quinones</span></td>
