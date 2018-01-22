@@ -172,6 +172,7 @@
                             </div>
                             <footer class="card-footer text-right p-0">
                                 <button class="btn btn-square btn-primary no-radius"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></button>
                             </footer>
                         </div>
                     </div>
