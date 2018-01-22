@@ -108,7 +108,7 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><input type="checkbox"></td>
+                                        <td><i class="fa fa-square"></i></td>
                                         <td>Finish Vortex</td>
                                         <td><span class="badge badge-danger">Needs Attention</span></td>
                                         <td><span>Carlos Quinones</span></td>
