@@ -114,10 +114,10 @@
                                         <td><span>Carlos Quinones</span></td>
                                         <td>1/31/18</td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background-color: green">
                                         <td><input type="checkbox" checked></td>
                                         <td>Quit Cortex</td>
-                                        <td style="background-color: green"><span class="badge badge-success">Complete</span></td>
+                                        <td><span class="badge badge-success">Complete</span></td>
                                         <td><span>Carlos Quinones</span></td>
                                         <td>1/31/18</td>
                                     </tr>
