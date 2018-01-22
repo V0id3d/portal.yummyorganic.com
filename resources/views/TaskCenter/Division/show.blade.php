@@ -114,7 +114,7 @@
                                         <td><span>Carlos Quinones</span></td>
                                         <td>1/31/18</td>
                                     </tr>
-                                    <tr style="background-color: green">
+                                    <tr>
                                         <td><input type="checkbox" checked></td>
                                         <td>Quit Cortex</td>
                                         <td><span class="badge badge-success">Complete</span></td>
