@@ -4,7 +4,12 @@
     <header class="header no-border" xmlns="http://www.w3.org/1999/html">
         <div class="header-info">
             <div class="left">
-                <h2 class="header-title"><strong>Task Center</strong> Add Project</h2>
+                <h2 class="header-title"><strong>Task Center</strong> Dashboard</h2>
+            </div>
+
+            <div class="right gap-items-2">
+                <a class="btn btn-secondary btn-square btn-round" href="#" data-provide="tooltip" title="" data-original-title="Add Project"><i class="fa fa-sticky-note-o"></i></a>
+                <a class="btn btn-secondary btn-square btn-round" href="#" data-provide="tooltip" title="" data-original-title="Settings"><i class="fa fa-gear"></i></a>
             </div>
         </div>
     </header>
@@ -20,29 +25,27 @@
                     </header>
 
                     <div class="card-body">
-                        <form action="{{ route('TaskCenter.Project.Store', $selected_division) }}" method="POST">
+                        <form action="{{ route('TaskCenter.Project.Store') }}" method="POST">
                             {{ csrf_field() }}
-
-
-
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}">
+                                        <input type="text" class="form-control" name="title">
                                         <label>Project Title</label>
-                                        @if ($errors->has('title'))
-                                            <div class="invalid-feedback">{{ $errors->first('title') }}</div>
-                                        @endif
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <input type="text" data-provide="datepicker"  class="form-control{{ $errors->has('project_due') ? ' is-invalid' : '' }}" id="project_due" name="project_due" value="{{ old('project_due') }}">
-                                        <label>Project Due</label>
-                                        @if ($errors->has('project_due'))
-                                            <div class="invalid-feedback">{{ $errors->first('project_due') }}</div>
-                                        @endif
+                                        <input type="text" class="form-control" name="assign">
+                                        <label>Assign</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="project_due">
+                                        <label>Due By</label>
                                     </div>
                                 </div>
                             </div>
@@ -51,14 +54,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" rows="6" name="description">{{ old('description') }}</textarea>
-                                        <label>Notes</label>
-                                        @if ($errors->has('description'))
-                                            <div class="invalid-feedback">{{ $errors->first('description') }}</div>
-                                        @endif
+                                        <textarea class="form-control" rows="6" name="description"></textarea>
+                                        <label>Description</label>
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="row">
                                 <div class="col-6">
@@ -68,7 +69,6 @@
 
                                 </div>
                             </div>
-
                         </form>
 
 
@@ -81,4 +81,6 @@
 
         </div>
     </div>
+
 @endsection
+

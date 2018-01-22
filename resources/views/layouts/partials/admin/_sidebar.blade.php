@@ -96,25 +96,32 @@
                 <ul class="menu-submenu">
 
                     <li class="menu-item">
-                        <a class="menu-link" href="{{ route('TaskCenter.Index') }}">
+                        <a class="menu-link" href="#">
                             <span class="dot"></span>
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
 
+                    <li class="menu-category">Divisions</li>
+
+                    @foreach(App\TaskCenter\Division::all() as $division)
+
+                        <li class="menu-item">
+                            <a class="menu-link" href="{{ route('TaskCenter.Division.Show', $division) }}">
+                                <span class="dot"></span>
+                                <span class="title">{{ $division->title }}</span>
+                            </a>
+                        </li>
+
+                    @endforeach
+
                     <li class="menu-item">
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="{{ route('TaskCenter.Division.Create') }}">
                             <span class="dot"></span>
-                            <span class="title">In Progress</span>
+                            <span class="title">Add Division</span>
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a class="menu-link" href="#">
-                            <span class="dot"></span>
-                            <span class="title">Complete</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <!-- END Multi Level Navigation Item -->

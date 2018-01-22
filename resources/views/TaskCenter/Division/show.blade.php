@@ -1,162 +1,169 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <header class="header no-border" xmlns="http://www.w3.org/1999/html">
+    <header class="header no-border" style="margin-bottom: 0;">
         <div class="header-info">
             <div class="left">
-                <h2 class="header-title"><strong>Customer Center</strong> Show Company</h2>
+                <h2 class="header-title"><strong>Task Center</strong>| {{ $selected_division->title }}</h2>
+            </div>
+
+            <div class="right gap-items-2">
+                <a class="btn btn-secondary btn-square btn-round" href="{{ route('TaskCenter.Project.Create', $selected_division) }}" data-provide="tooltip" title="" data-original-title="Add Project"><i class="fa fa-plus"></i></a>
+                <span class="divider-line mx-1"></span>
+                <a class="btn btn-secondary btn-square btn-round" href="{{ route('TaskCenter.Division.Edit', $selected_division) }}" data-provide="tooltip" title="" data-original-title="Edit Division"><i class="fa fa-pencil"></i></a>
+                <a class="btn btn-secondary btn-square btn-round" href="#" data-provide="tooltip" title="" data-original-title="Settings"><i class="fa fa-gear"></i></a>
             </div>
         </div>
     </header>
 
-
-    <div class="main-content">
+    <div class="main-content" style="padding-top: 0;">
         <div class="row">
-
             <div class="col-12">
-                <div class="card card-shadowed form-type-material">
-                    <header class="card-header">
-                        <h4 class="card-title"><strong>Show</strong> Company</h4>
-                    </header>
+                <div class="card">
+                    <div class="row no-gutters py-2">
 
-                    <div class="card-body">
-                        <form>
 
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" value="{{ old('name', $selected_company->name) }}" readonly>
-                                        <label>Company Name</label>
-                                        @if ($errors->has('name'))
-                                            <div class="invalid-feedback">{{ $errors->first('name') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="form-group do-float">
-                                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ old('email', $selected_company->email) }}" readonly>
-                                        <label>Company E-Mail</label>
-                                        @if ($errors->has('email'))
-                                            <div class="invalid-feedback">{{ $errors->first('email') }}</div>
-                                        @endif
-                                    </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card-body br-1 border-light">
+                                <div class="flexbox mb-1">
+                                    <span>
+                                        <i class="fa fa-square-o fa-2x"></i><br>
+                                        Total
+                                    </span>
+                                    <span class="text-primary fs-40">{{ (is_null($selected_division->projects)) ? '0' : $selected_division->projects->count() }}</span>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" id="phone" name="phone" value="{{ old('phone', $selected_company->phone) }}" readonly>
-                                        <label>Company Phone</label>
-                                        @if ($errors->has('phone'))
-                                            <div class="invalid-feedback">{{ $errors->first('phone') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
 
-                                <div class="col-6">
-                                    <div class="form-group do-float">
-                                        <input type="text" class="form-control{{ $errors->has('website') ? ' is-invalid' : '' }}" id="website" name="website" value="{{ old('website', $selected_company->website) }}" readonly>
-                                        <label>Company Website</label>
-                                        @if ($errors->has('website'))
-                                            <div class="invalid-feedback">{{ $errors->first('website') }}</div>
-                                        @endif
-                                    </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card-body br-1 border-light">
+                                <div class="flexbox mb-1">
+                                    <span>
+                                        <i class="fa fa-minus-square-o fa-2x"></i><br>
+                                        In Progress
+                                    </span>
+                                    <span class="text-primary fs-40">0</span>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address" name="address" value="{{ old('address', $selected_company->address) }}" readonly>
-                                        <label>Address</label>
-                                        @if ($errors->has('address'))
-                                            <div class="invalid-feedback">{{ $errors->first('address') }}</div>
-                                        @endif
-                                    </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card-body br-1 border-light">
+                                <div class="flexbox mb-1">
+                                    <span>
+                                        <i class="fa fa-check-square-o fa-2x"></i><br>
+                                        Completed
+                                    </span>
+                                    <span class="text-primary fs-40">0</span>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('address2') ? ' is-invalid' : '' }}" id="address2" name="address2" value="{{ old('address2', $selected_company->address2) }}" readonly>
-                                        <label>Addtl.</label>
-                                        @if ($errors->has('address2'))
-                                            <div class="invalid-feedback">{{ $errors->first('address2') }}</div>
-                                        @endif
-                                    </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card-body br-1 border-light">
+                                <div class="flexbox mb-1">
+                                    <span>
+                                        <i class="fa fa-clock-o fa-2x"></i><br>
+                                        Late
+                                    </span>
+                                    <span class="text-primary fs-40">0</span>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" id="city" name="city" value="{{ old('city', $selected_company->city) }}" readonly>
-                                        <label>City</label>
-                                        @if ($errors->has('city'))
-                                            <div class="invalid-feedback">{{ $errors->first('city') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group do-float">
-                                        <input type="text" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" id="state" name="state" value="{{ old('state', $selected_company->state) }}" readonly>
-                                        <label>State</label>
-                                        @if ($errors->has('state'))
-                                            <div class="invalid-feedback">{{ $errors->first('state') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group do-float">
-                                        <input type="text" class="form-control{{ $errors->has('zip') ? ' is-invalid' : '' }}" id="zip" name="zip" value="{{ old('zip', $selected_company->zip) }}" readonly>
-                                        <label>Zip</label>
-                                        @if ($errors->has('zip'))
-                                            <div class="invalid-feedback">{{ $errors->first('zip') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control{{ $errors->has('notes') ? ' is-invalid' : '' }}" rows="6" name="notes" readonly>{{ old('notes', $selected_company->notes) }}</textarea>
-                                        <label>Notes</label>
-                                        @if ($errors->has('notes'))
-                                            <div class="invalid-feedback">{{ $errors->first('notes') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-6 center-block">
-                                    <div class="form-group">
-                                        {{--<a class="btn btn-sm btn-primary" href="{{ route('CustomerCenter.Company.Edit', $selected_company)  }}">Edit Company</a>--}}
-                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Company.Edit', $selected_company) }}" value="Edit Company">
-                                        <input type="submit" class="btn btn-sm btn-primary" formaction="{{ route('CustomerCenter.Contact.Create') }}" value="Add Contact">
-                                        {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Company</a>--}}
-                                        {{--<a class="btn btn-sm btn-primary" href="#">Use To Create Contact</a>--}}
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
+                        </div>
 
 
                     </div>
                 </div>
             </div>
 
+        </div>
 
+        <div class="row">
+            @if(!is_null($selected_division->projects))
+                @foreach($selected_division->projects as $project)
+                    <div class="col-6">
+                        <div class="card card-hover-shadow">
+                            <h4 class="card-title">
+                                <strong>{{ $project->title }}</strong>
+                                <small class="subtitle">Due: {{ (is_null($project->project_due)) ? 'Not Set' : $project->project_due }}</small>
 
+                            </h4>
 
+                            <div class="card-body">
+                                <p>{{ $project->description }}</p>
+                                <table class="table" data-provide="selectall">
+                                    <thead>
+                                    <tr>
+                                        <th class="w-40px">
+
+                                        </th>
+                                        <th>Task</th>
+                                        <th>Status</th>
+                                        <th>Assigned</th>
+                                        <th>Due</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if($project->tasks->isEmpty())
+                                        <tr>
+                                            <td colspan="100%" class="text-center">No Tasks given</td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td colspan="100%">>{{ $project->tasks }}</td>
+                                        </tr>
+                                    @endif
+                                    </tbody>
+                                </table>
+
+                                    {{--<tbody>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>--}}
+                                            {{--<div class="custom-control custom-checkbox">--}}
+                                                {{--<input type="checkbox" class="custom-control-input">--}}
+                                                {{--<label class="custom-control-label"></label>--}}
+                                            {{--</div>--}}
+                                        {{--</td>--}}
+                                        {{--<td>Mark</td>--}}
+                                        {{--<td>Otto</td>--}}
+                                        {{--<td>@mdo</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>--}}
+                                            {{--<div class="custom-control custom-checkbox">--}}
+                                                {{--<input type="checkbox" class="custom-control-input">--}}
+                                                {{--<label class="custom-control-label"></label>--}}
+                                            {{--</div>--}}
+                                        {{--</td>--}}
+                                        {{--<td>Jacob</td>--}}
+                                        {{--<td>Thornton</td>--}}
+                                        {{--<td>@fat</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>--}}
+                                            {{--<div class="custom-control custom-checkbox">--}}
+                                                {{--<input type="checkbox" class="custom-control-input">--}}
+                                                {{--<label class="custom-control-label"></label>--}}
+                                            {{--</div>--}}
+                                        {{--</td>--}}
+                                        {{--<td>Larry</td>--}}
+                                        {{--<td>the Bird</td>--}}
+                                        {{--<td>@twitter</td>--}}
+                                    {{--</tr>--}}
+                                    {{--</tbody>--}}
+                                {{--</table>--}}
+                            </div>
+                            <footer class="card-footer text-right p-0">
+                                <button class="btn btn-square btn-primary no-radius"><i class="fa fa-plus"></i></button>
+                            </footer>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
+
 @endsection

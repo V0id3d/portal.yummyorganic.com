@@ -38,17 +38,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             Route::get('/{selected_division}/edit', 'TaskCenter\DivisionController@edit')->name('TaskCenter.Division.Edit');
             Route::get('/{selected_division}/show', 'TaskCenter\DivisionController@show')->name('TaskCenter.Division.Show');
             Route::patch('/{selected_division}/edit', 'TaskCenter\DivisionController@update')->name('TaskCenter.Division.Update');
+            // <website>/admin/taskcenter/{selected_division}/project
+            Route::prefix('{selected_division}/project')->group(function() {
+                Route::get('/', 'TaskCenter\ProjectController@index')->name('TaskCenter.Project.Index');
+                Route::get('/create', 'TaskCenter\ProjectController@create')->name('TaskCenter.Project.Create');
+                Route::post('/create', 'TaskCenter\ProjectController@store')->name('TaskCenter.Project.Store');
+                Route::get('/{selected_project}/edit', 'TaskCenter\ProjectController@edit')->name('TaskCenter.Project.Edit');
+                Route::get('/{selected_project}/show', 'TaskCenter\ProjectController@show')->name('TaskCenter.Project.Show');
+                Route::patch('/{selected_project}/edit', 'TaskCenter\ProjectController@update')->name('TaskCenter.Project.Update');
+            });
         });
 
-        // <website>/admin/taskcenter/project
-        Route::prefix('project')->group(function() {
-            Route::get('/', 'TaskCenter\ProjectController@index')->name('TaskCenter.Project.Index');
-            Route::get('/create', 'TaskCenter\ProjectController@create')->name('TaskCenter.Project.Create');
-            Route::post('/create', 'TaskCenter\ProjectController@store')->name('TaskCenter.Project.Store');
-            Route::get('/{selected_project}/edit', 'TaskCenter\ProjectController@edit')->name('TaskCenter.Project.Edit');
-            Route::get('/{selected_project}/show', 'TaskCenter\ProjectController@show')->name('TaskCenter.Project.Show');
-            Route::patch('/{selected_project}/edit', 'TaskCenter\ProjectController@update')->name('TaskCenter.Project.Update');
-        });
+
 
         // <website>/admin/taskcenter/task
         Route::prefix('task')->group(function() {

@@ -6,8 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+
+    protected $fillable = [
+        'title', 'description', 'owner_id', 'project_due', 'project_started', 'project_complete', 'division_id', 'creator_id'
+    ];
+
     public function tasks()
     {
-        return $this->hasMany('App\TaskCenter\Project');
+        return $this->hasMany(Tasks::class);
+    }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
     }
 }
