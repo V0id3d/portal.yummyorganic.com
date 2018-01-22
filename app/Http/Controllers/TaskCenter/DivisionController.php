@@ -73,7 +73,7 @@ class DivisionController extends Controller
     public function show(Division $selected_division)
     {
         $selected_division->load('projects.tasks');
-        return view('TaskCenter.Division.Show', compact('selected_division'));
+        return view('TaskCenter.Division.show', compact('selected_division'));
     }
 
     /**
