@@ -88,7 +88,7 @@
                         <div class="card card-hover-shadow">
                             <h4 class="card-title">
                                 <strong>{{ $project->title }}</strong>
-                                <small class="subtitle">Due: {{ (is_null($project->project_due)) ? 'Not Set' : $project->project_due }}</small>
+                                <small class="subtitle">Due: {{ ($project->project_due == '') ? 'Not Set' : $project->project_due }}</small>
 
                             </h4>
 
@@ -107,28 +107,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><i class="fa fa-square-o"></i></td>
-                                        <td>Finish Vortex</td>
-                                        <td><span class="badge badge-danger">Needs Attention</span></td>
-                                        <td><span>Carlos Quinones</span></td>
-                                        <td>1/31/18</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa fa-check"></i></td>
-                                        <td>Quit Cortex</td>
-                                        <td><span class="badge badge-success">Complete</span></td>
-                                        <td><span>Carlos Quinones</span></td>
-                                        <td>1/31/18</td>
-                                    </tr>
                                     @if($project->tasks->isEmpty())
                                         <tr>
                                             <td colspan="100%" class="text-center">No Tasks given</td>
                                         </tr>
                                     @else
-                                        <tr>
-                                            <td colspan="100%">>{{ $project->tasks }}</td>
-                                        </tr>
+                                        @foreach($project->tasks as $task)
+                                            {{--{{ dd($task) }}--}}
+                                            <tr>
+                                                <td><i class="fa {{ ($task->project_complete == '') ? 'fa-square-o' : 'fa-check' }}"></i></td>
+                                                <td><a href="{{ route('TaskCenter.Task.Show', [$selected_division, $project, $task]) }}">{{ $task->title }}</a></td>
+                                                <td><span class="badge badge-{{ (is_null($task->status) ? 'default' : $task->status->color) }}">{{ (is_null($task->status) ? 'Unknown' : $task->status->title) }}</span></td>
+                                                <td>{{ (is_null($task->user || $task->user == 0) ? 'Not Assigned' : $task->user->name) }}</td>
+                                                <td>{{ ($task->project_due == '') ? 'Not Set' : $task->project_due }}</td>
+                                            </tr>
+                                        @endforeach
                                     @endif
                                     </tbody>
                                 </table>
@@ -172,10 +165,15 @@
                             </div>
                             <footer class="card-footer text-right p-0">
                                 <div class="btn-group">
-                                    <button class="btn btn-square btn-primary no-radius"><i class="fa fa-plus"></i></button>
+                                    <a class="btn btn-square btn-primary no-radius" href="{{ route('TaskCenter.Task.Create', [$selected_division, $project]) }}"><i class="fa fa-plus"></i></a>
+                                    {{--<button class="btn btn-square btn-primary no-radius" onClick="{{ route('TaskCenter.Task.Create', [$selected_division, $project]) }}"><i class="fa fa-plus"></i></button>--}}
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn btn-square btn-success no-radius"><i class="fa fa-play"></i></button>
+                                    @if($project->project_started == '')
+                                        <button class="btn btn-square btn-success no-radius"><i class="fa fa-play"></i></button>
+                                    @else
+                                        <button class="btn btn-square btn-yellow no-radius"><i class="fa fa-pause"></i></button>
+                                    @endif
                                     <button class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></button>
                                 </div>
                             </footer>

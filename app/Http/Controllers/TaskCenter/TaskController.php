@@ -2,11 +2,32 @@
 
 namespace App\Http\Controllers\TaskCenter;
 
+use App\TaskCenter\Division;
+use App\TaskCenter\Project;
+use App\TaskCenter\Task;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class TaskController extends Controller
 {
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array $data
+     * @param  mixed $record
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data, $record = null)
+    {
+        return Validator::make($data, [
+//            'title' => (is_null($record)) ? 'required|string|max:255|unique:divisions' : 'required|string|max:255|unique:divisions,title,' . $record->id,
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,33 +41,60 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Division $selected_division
+     * @param Project $selected_project
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Division $selected_division, Project $selected_project)
     {
-        //
+        $userList = User::all();
+
+        return view('TaskCenter.Task.create' , compact('selected_project', 'selected_division', 'userList'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     * @param Division $selected_division
+     * @param Project $selected_project
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Division $selected_division, Project $selected_project)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $newData =[
+            'title' => $request->title,
+            'description' => $request->description,
+            'project_due' => $request->project_due,
+            'user_id' => $request->user_id,
+            'project_id' => $selected_project->id,
+            'creator_id' => auth()->user()->id,
+            'status_id' => ($request->status_id) ? $request->status_id : 0
+        ];
+
+        dd($newData);
+        $newTask = Task::create($newData);
+
+        return redirect(route('TaskCenter.Task.Show', [$selected_division, $selected_project, $newTask]));
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Division $selected_division
+     * @param Project $selected_project
+     * @param $selected_task
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function show($id)
+    public function show(Division $selected_division, Project $selected_project, Task $selected_task)
     {
-        //
+        $userList = User::all();
+        return view('TaskCenter.Task.show', compact('selected_division', 'selected_project', 'selected_task', 'userList'));
     }
 
     /**
@@ -63,11 +111,14 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param Division $selected_division
+     * @param Project $selected_project
+     * @param Task $selected_task
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Division $selected_division, Project $selected_project, Task $selected_task)
     {
         //
     }
@@ -75,10 +126,13 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Division $selected_division
+     * @param Project $selected_project
+     * @param Task $selected_task
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function destroy($id)
+    public function destroy(Division $selected_division, Project $selected_project, Task $selected_task)
     {
         //
     }

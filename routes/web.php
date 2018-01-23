@@ -46,20 +46,28 @@ Route::prefix('admin')->middleware('auth')->group(function () {
                 Route::get('/{selected_project}/edit', 'TaskCenter\ProjectController@edit')->name('TaskCenter.Project.Edit');
                 Route::get('/{selected_project}/show', 'TaskCenter\ProjectController@show')->name('TaskCenter.Project.Show');
                 Route::patch('/{selected_project}/edit', 'TaskCenter\ProjectController@update')->name('TaskCenter.Project.Update');
+                Route::prefix('{selected_project}/task')->group(function() {
+                    Route::get('/', 'TaskCenter\TaskController@index')->name('TaskCenter.Task.Index');
+                    Route::get('/create', 'TaskCenter\TaskController@create')->name('TaskCenter.Task.Create');
+                    Route::post('/create', 'TaskCenter\TaskController@store')->name('TaskCenter.Task.Store');
+                    Route::get('/{selected_task}/edit', 'TaskCenter\TaskController@edit')->name('TaskCenter.Task.Edit');
+                    Route::get('/{selected_task}/show', 'TaskCenter\TaskController@show')->name('TaskCenter.Task.Show');
+                    Route::patch('/{selected_task}/edit', 'TaskCenter\TaskController@update')->name('TaskCenter.Task.Update');
+                });
             });
         });
 
 
 
-        // <website>/admin/taskcenter/task
-        Route::prefix('task')->group(function() {
-            Route::get('/', 'TaskCenter\TaskController@index')->name('TaskCenter.Task.Index');
-            Route::get('/create', 'TaskCenter\TaskController@create')->name('TaskCenter.Task.Create');
-            Route::post('/create', 'TaskCenter\TaskController@store')->name('TaskCenter.Task.Store');
-            Route::get('/{selected_division}/edit', 'TaskCenter\TaskController@edit')->name('TaskCenter.Task.Edit');
-            Route::get('/{selected_division}/show', 'TaskCenter\TaskController@show')->name('TaskCenter.Task.Show');
-            Route::patch('/{selected_division}/edit', 'TaskCenter\TaskController@update')->name('TaskCenter.Task.Update');
-        });
+//        // <website>/admin/taskcenter/task
+//        Route::prefix('task')->group(function() {
+//            Route::get('/', 'TaskCenter\TaskController@index')->name('TaskCenter.Task.Index');
+//            Route::get('/create', 'TaskCenter\TaskController@create')->name('TaskCenter.Task.Create');
+//            Route::post('/create', 'TaskCenter\TaskController@store')->name('TaskCenter.Task.Store');
+//            Route::get('/{selected_division}/edit', 'TaskCenter\TaskController@edit')->name('TaskCenter.Task.Edit');
+//            Route::get('/{selected_division}/show', 'TaskCenter\TaskController@show')->name('TaskCenter.Task.Show');
+//            Route::patch('/{selected_division}/edit', 'TaskCenter\TaskController@update')->name('TaskCenter.Task.Update');
+//        });
 
         // <website>/admin/taskcenter/status
         Route::prefix('status')->group(function() {

@@ -83,8 +83,9 @@ class ProjectController extends Controller
      */
     public function show(Division $selected_division, Project $selected_project)
     {
-//        $selected_project->load('division', 'tasks');
+        $selected_project->load('division', 'tasks.user');
         return view('TaskCenter.Project.show', compact('selected_project', 'selected_division'));
+
     }
 
     /**
