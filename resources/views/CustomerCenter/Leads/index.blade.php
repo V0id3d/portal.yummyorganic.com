@@ -58,8 +58,7 @@
                             <div class="media-body text-truncate">
                                 <h6>{{ $lead->name }}</h6>
                                 <small>
-                                    <span>{{ $lead->phone }} -
-                                    <span>{{ $lead->city }}, {{ $lead->state }}</span>
+                                    <span>{{ $lead->phone }} - {{ $lead->city }}, {{ $lead->state }} - {{ $lead->email }}</span>
                                 </small>
                             </div>
                         </a>
