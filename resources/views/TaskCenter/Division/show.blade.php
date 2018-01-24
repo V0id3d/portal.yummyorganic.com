@@ -118,7 +118,7 @@
                                                 <td><i class="fa {{ ($task->project_complete == '') ? 'fa-square-o' : 'fa-check' }}"></i></td>
                                                 <td><a href="{{ route('TaskCenter.Task.Show', [$selected_division, $project, $task]) }}">{{ $task->title }}</a></td>
                                                 <td><span class="badge badge-{{ (is_null($task->status) ? 'default' : $task->status->color) }}">{{ (is_null($task->status) ? 'Unknown' : $task->status->title) }}</span></td>
-                                                <td>{{ (is_null($task->user) || $task->user == 0) ? 'Not Assigned' : $task->user->name) }}</td>
+                                                <td>{{ (is_null($task->user) || $task->user == 0) ? 'Not Assigned' : $task->user->name }}</td>
                                                 <td>{{ ($task->project_due == '') ? 'Not Set' : $task->project_due }}</td>
                                             </tr>
                                         @endforeach
