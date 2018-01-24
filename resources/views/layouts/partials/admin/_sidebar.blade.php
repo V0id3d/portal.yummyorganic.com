@@ -86,7 +86,7 @@
             <!-- END Multi Level Navigation Item -->
 
             <!-- Multi Level Navigation Item [Task Center] -->
-            <li class="menu-item">
+            <li class="menu-item {{ setOpen('admin/taskcenter') }}">
                 <a class="menu-link" href="#">
                     <span class="icon fa fa-tasks"></span>
                     <span class="title">Task Center</span>
@@ -95,8 +95,8 @@
 
                 <ul class="menu-submenu">
 
-                    <li class="menu-item">
-                        <a class="menu-link" href="#">
+                    <li class="menu-item {{ setActive('admin/taskcenter/dashboard') }}">
+                        <a class="menu-link" href="{{ route('TaskCenter.Index') }}">
                             <span class="dot"></span>
                             <span class="title">Dashboard</span>
                         </a>
@@ -106,7 +106,7 @@
 
                     @foreach(App\TaskCenter\Division::all() as $division)
 
-                        <li class="menu-item">
+                        <li class="menu-item {{ setActive('admin/taskcenter/division/' . $division->id ) }}">
                             <a class="menu-link" href="{{ route('TaskCenter.Division.Show', $division) }}">
                                 <span class="dot"></span>
                                 <span class="title">{{ $division->title }}</span>
@@ -115,12 +115,12 @@
 
                     @endforeach
 
-                    <li class="menu-item">
-                        <a class="menu-link" href="{{ route('TaskCenter.Division.Create') }}">
-                            <span class="dot"></span>
-                            <span class="title">Add Division</span>
-                        </a>
-                    </li>
+                    {{--<li class="menu-item">--}}
+                        {{--<a class="menu-link" href="{{ route('TaskCenter.Division.Create') }}">--}}
+                            {{--<span class="dot"></span>--}}
+                            {{--<span class="title">Add Division</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
 
                 </ul>
             </li>

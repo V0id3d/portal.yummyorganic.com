@@ -79,24 +79,36 @@ class DivisionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Division $selected_division
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function edit($id)
+    public function edit(Division $selected_division)
     {
-        //
+        return view('TaskCenter.Division.edit', compact('selected_division'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param Division $selected_division
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Division $selected_division)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $updatedData = [
+            'title' =>  $request->title,
+            'description' => $request->description,
+            'owner_id'   => auth()->user()->id
+        ];
+
+        $selected_division->update($updatedData);
+
+        return redirect(route('TaskCenter.Division.Show', $selected_division));
     }
 
     /**

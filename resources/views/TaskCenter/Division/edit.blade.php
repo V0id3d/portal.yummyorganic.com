@@ -20,7 +20,7 @@
                     </header>
 
                     <div class="card-body">
-                        <form action="{{ route('TaskCenter.Division.Update') }}" method="POST">
+                        <form action="{{ route('TaskCenter.Division.Update', $selected_division) }}" method="POST" id="division">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
 
@@ -51,19 +51,16 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary right">
-                                    </div>
-
-                                </div>
-                            </div>
-
                         </form>
 
 
                     </div>
+
+                    <footer class="card-footer text-right p-0">
+                        <div class="btn-group">
+                            <button class="btn btn-square btn-primary no-radius" type="submit" form="division"><i class="fa fa-save"></i></button>
+                        </div>
+                    </footer>
                 </div>
             </div>
 

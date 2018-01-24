@@ -81,10 +81,10 @@
 
         </div>
 
-        <div class="row">
+        <div class="masonry-grid masonry-cols-2 gap-1">
             @if(!is_null($selected_division->projects))
                 @foreach($selected_division->projects as $project)
-                    <div class="col-6">
+                    <div class="masonry-item">
                         <div class="card card-hover-shadow">
                             <h4 class="card-title">
                                 <strong>{{ $project->title }}</strong>
@@ -170,11 +170,12 @@
                                 </div>
                                 <div class="btn-group">
                                     @if($project->project_started == '')
-                                        <button class="btn btn-square btn-success no-radius"><i class="fa fa-play"></i></button>
+                                        <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-play"></i></a>
                                     @else
-                                        <button class="btn btn-square btn-yellow no-radius"><i class="fa fa-pause"></i></button>
+                                        <a class="btn btn-square btn-yellow no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-pause"></i></a>
                                     @endif
-                                    <button class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></button>
+                                    <a href="{{ route('TaskCenter.Project.Edit', [$selected_division, $project]) }}" class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></a>
+                                    {{--<button class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></button>--}}
                                 </div>
                             </footer>
                         </div>

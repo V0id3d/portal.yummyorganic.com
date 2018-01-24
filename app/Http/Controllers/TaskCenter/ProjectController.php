@@ -94,9 +94,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Division $selected_division, Project $selected_project)
     {
-        //
+        return view('TaskCenter.Project.edit', compact('selected_project', 'selected_division'));
     }
 
     /**
@@ -120,5 +120,16 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function toggleStart(Division $selected_division, Project $selected_project)
+    {
+        if($selected_project->project_started == ''){
+            $selected_project->update(['project_started' => now()]);
+            return redirect()->back();
+        }
+        $selected_project->update(['project_started' => '']);
+        return redirect()->back();
+
     }
 }

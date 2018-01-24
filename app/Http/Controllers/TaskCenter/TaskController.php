@@ -4,6 +4,7 @@ namespace App\Http\Controllers\TaskCenter;
 
 use App\TaskCenter\Division;
 use App\TaskCenter\Project;
+use App\TaskCenter\Status;
 use App\TaskCenter\Task;
 use App\User;
 use Illuminate\Http\Request;
@@ -75,7 +76,6 @@ class TaskController extends Controller
             'status_id' => ($request->status_id) ? $request->status_id : 0
         ];
 
-        dd($newData);
         $newTask = Task::create($newData);
 
         return redirect(route('TaskCenter.Task.Show', [$selected_division, $selected_project, $newTask]));
@@ -100,12 +100,17 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Division $selected_division
+     * @param Project $selected_project
+     * @param Task $selected_task
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function edit($id)
+    public function edit(Division $selected_division, Project $selected_project, Task $selected_task)
     {
-        //
+        $userList = User::all();
+        $statusList = Status::all();
+        return view('TaskCenter.Task.edit', compact('selected_division', 'selected_project', 'selected_task', 'userList', 'statusList'));
     }
 
     /**
@@ -120,7 +125,22 @@ class TaskController extends Controller
      */
     public function update(Request $request, Division $selected_division, Project $selected_project, Task $selected_task)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $updatedData =[
+            'title' => $request->title,
+            'description' => $request->description,
+            'project_due' => $request->project_due,
+            'user_id' => $request->user_id,
+            'project_id' => $selected_project->id,
+            'status_id' => ($request->status_id) ? $request->status_id : 0
+        ];
+
+//        dd($updatedData);
+
+        $selected_task->update($updatedData);
+
+        return redirect(route('TaskCenter.Task.Show', [$selected_division, $selected_project, $selected_task]));
     }
 
     /**
@@ -135,5 +155,16 @@ class TaskController extends Controller
     public function destroy(Division $selected_division, Project $selected_project, Task $selected_task)
     {
         //
+    }
+
+    public function toggleStart(Division $selected_division, Project $selected_project, Task $selected_task)
+    {
+        if($selected_task->project_started == ''){
+            $selected_task->update(['project_started' => now()]);
+            return redirect()->back();
+        }
+        $selected_task->update(['project_started' => '']);
+        return redirect()->back();
+
     }
 }

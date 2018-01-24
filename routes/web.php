@@ -20,16 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::prefix('taskcenter')->group(function () {
-        Route::get('/', 'TaskCenter\Projects@index')->name('TaskCenter.Index');
-        Route::prefix('project')->group(function () {
-            Route::get('/create', 'TaskCenter\Projects@create')->name('TaskCenter.Project.Create');
-            Route::post('/create','TaskCenter\Projects@store')->name('TaskCenter.Project.Store');
-        });
-
-    });
 
     Route::prefix('taskcenter')->group(function (){
+        Route::get('/dashboard', 'TaskCenter\CenterController@index')->name('TaskCenter.Index');
         // <website>/admin/taskcenter/division
         Route::prefix('division')->group(function() {
             Route::get('/', 'TaskCenter\DivisionController@index')->name('TaskCenter.Division.Index');
@@ -46,6 +39,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
                 Route::get('/{selected_project}/edit', 'TaskCenter\ProjectController@edit')->name('TaskCenter.Project.Edit');
                 Route::get('/{selected_project}/show', 'TaskCenter\ProjectController@show')->name('TaskCenter.Project.Show');
                 Route::patch('/{selected_project}/edit', 'TaskCenter\ProjectController@update')->name('TaskCenter.Project.Update');
+                Route::get('/{selected_project}/toggle', 'TaskCenter\ProjectController@toggleStart')->name('TaskCenter.Project.ToggleStart');
                 Route::prefix('{selected_project}/task')->group(function() {
                     Route::get('/', 'TaskCenter\TaskController@index')->name('TaskCenter.Task.Index');
                     Route::get('/create', 'TaskCenter\TaskController@create')->name('TaskCenter.Task.Create');
@@ -53,25 +47,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
                     Route::get('/{selected_task}/edit', 'TaskCenter\TaskController@edit')->name('TaskCenter.Task.Edit');
                     Route::get('/{selected_task}/show', 'TaskCenter\TaskController@show')->name('TaskCenter.Task.Show');
                     Route::patch('/{selected_task}/edit', 'TaskCenter\TaskController@update')->name('TaskCenter.Task.Update');
+                    Route::get('/{selected_task}/toggle', 'TaskCenter\TaskController@toggleStart')->name('TaskCenter.Task.ToggleStart');
                 });
             });
         });
-
-
-
-//        // <website>/admin/taskcenter/task
-//        Route::prefix('task')->group(function() {
-//            Route::get('/', 'TaskCenter\TaskController@index')->name('TaskCenter.Task.Index');
-//            Route::get('/create', 'TaskCenter\TaskController@create')->name('TaskCenter.Task.Create');
-//            Route::post('/create', 'TaskCenter\TaskController@store')->name('TaskCenter.Task.Store');
-//            Route::get('/{selected_division}/edit', 'TaskCenter\TaskController@edit')->name('TaskCenter.Task.Edit');
-//            Route::get('/{selected_division}/show', 'TaskCenter\TaskController@show')->name('TaskCenter.Task.Show');
-//            Route::patch('/{selected_division}/edit', 'TaskCenter\TaskController@update')->name('TaskCenter.Task.Update');
-//        });
-
         // <website>/admin/taskcenter/status
         Route::prefix('status')->group(function() {
-            Route::get('/', 'TaskCenter\StatusController@index')->name('TaskCenter.Status.Index');
             Route::get('/create', 'TaskCenter\StatusController@create')->name('TaskCenter.Status.Create');
             Route::post('/create', 'TaskCenter\StatusController@store')->name('TaskCenter.Status.Store');
             Route::get('/{selected_status}/edit', 'TaskCenter\StatusController@edit')->name('TaskCenter.Status.Edit');
