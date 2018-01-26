@@ -78,8 +78,7 @@ class TaskController extends Controller
 
         $newTask = Task::create($newData);
 
-        return redirect(route('TaskCenter.Task.Show', [$selected_division, $selected_project, $newTask]));
-
+        return redirect(route('TaskCenter.Division.Show', $selected_division));
     }
 
     /**
@@ -140,7 +139,7 @@ class TaskController extends Controller
 
         $selected_task->update($updatedData);
 
-        return redirect(route('TaskCenter.Task.Show', [$selected_division, $selected_project, $selected_task]));
+        return redirect(route('TaskCenter.Division.Show', $selected_division));
     }
 
     /**
