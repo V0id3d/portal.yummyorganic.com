@@ -135,20 +135,21 @@
                                                 <td>
                                                     <div class="btn-group">
                                                         <a class="btn btn-primary no-radius btn-xs" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
+                                                        <a class="btn btn-primary no-radius btn-xs" href="{{ route('TaskCenter.Task.Show', [$selected_division, $project, $task]) }}"><i class="fa fa-eye"></i></a>
                                                     </div>
-                                                    <div class="btn-group">
-                                                        @if($task->project_started == '')
-                                                            <a class="btn btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-play"></i></a>
-                                                        @else
-                                                            <a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-pause"></i></a>
-                                                        @endif
+                                                    {{--<div class="btn-group">--}}
+                                                        {{--@if($task->project_started == '')--}}
+                                                            {{--<a class="btn btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-play"></i></a>--}}
+                                                        {{--@else--}}
+                                                            {{--<a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-pause"></i></a>--}}
+                                                        {{--@endif--}}
 
-                                                        @if($task->project_completed == '')
-                                                            <a class="btn btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-check"></i></a>
-                                                        @else
-                                                            <a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-refresh"></i></a>
-                                                        @endif
-                                                    </div>
+                                                        {{--@if($task->project_completed == '')--}}
+                                                            {{--<a class="btn btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-check"></i></a>--}}
+                                                        {{--@else--}}
+                                                            {{--<a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-refresh"></i></a>--}}
+                                                        {{--@endif--}}
+                                                    {{--</div>--}}
                                                 </td>
                                             </tr>
                                         @endforeach
