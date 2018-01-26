@@ -86,11 +86,22 @@
                 @foreach($selected_division->projects as $project)
                     <div class="masonry-item">
                         <div class="card card-hover-shadow">
-                            <h4 class="card-title">
-                                <strong>{{ $project->title }}</strong>
-                                <small class="subtitle">Due: {{ ($project->project_due == '') ? 'Not Set' : $project->project_due }}</small>
+                            <div class="card-title">
+                                <h4>
+                                    <strong>{{ $project->title }}</strong>
+                                    <small class="subtitle">Due: {{ ($project->project_due == '') ? 'Not Set' : $project->project_due }}</small>
 
-                            </h4>
+                                </h4>
+                                <div class="btn-group">
+                                    @if($project->project_started == '')
+                                        <a class="btn btn-xs btn-success no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-play"></i></a>
+                                    @else
+                                        <a class="btn btn-xs btn-yellow no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-pause"></i></a>
+                                    @endif
+                                    <a href="{{ route('TaskCenter.Project.Edit', [$selected_division, $project]) }}" class="btn btn-xs btn-primary no-radius"><i class="fa fa-pencil"></i></a>
+                                </div>
+                            </div>
+
 
                             <div class="card-body">
                                 <p>{{ $project->description }}</p>
@@ -187,15 +198,15 @@
                                     <a class="btn btn-square btn-primary no-radius" href="{{ route('TaskCenter.Task.Create', [$selected_division, $project]) }}"><i class="fa fa-plus"></i></a>
                                     {{--<button class="btn btn-square btn-primary no-radius" onClick="{{ route('TaskCenter.Task.Create', [$selected_division, $project]) }}"><i class="fa fa-plus"></i></button>--}}
                                 </div>
-                                <div class="btn-group">
-                                    @if($project->project_started == '')
-                                        <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-play"></i></a>
-                                    @else
-                                        <a class="btn btn-square btn-yellow no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-pause"></i></a>
-                                    @endif
-                                    <a href="{{ route('TaskCenter.Project.Edit', [$selected_division, $project]) }}" class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></a>
+                                {{--<div class="btn-group">--}}
+                                    {{--@if($project->project_started == '')--}}
+                                        {{--<a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-play"></i></a>--}}
+                                    {{--@else--}}
+                                        {{--<a class="btn btn-square btn-yellow no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-pause"></i></a>--}}
+                                    {{--@endif--}}
+                                    {{--<a href="{{ route('TaskCenter.Project.Edit', [$selected_division, $project]) }}" class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></a>--}}
                                     {{--<button class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></button>--}}
-                                </div>
+                                {{--</div>--}}
                             </footer>
                         </div>
                     </div>
