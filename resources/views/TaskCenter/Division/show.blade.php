@@ -126,7 +126,7 @@
                                                         <a class="btn btn-square btn-primary no-radius" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
                                                     </div>
                                                     <div class="btn-group">
-                                                        @if($selected_task->project_started == '')
+                                                        @if($task->project_started == '')
                                                             <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-play"></i></a>
                                                         @else
                                                             <a class="btn btn-square btn-yellow no-radius" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-pause"></i></a>
