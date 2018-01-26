@@ -131,6 +131,12 @@
                                                         @else
                                                             <a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-pause"></i></a>
                                                         @endif
+
+                                                        @if($task->project_completed == '')
+                                                            <a class="btn btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-check"></i></a>
+                                                        @else
+                                                            <a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-refresh"></i></a>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             </tr>
