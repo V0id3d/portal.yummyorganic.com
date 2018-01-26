@@ -106,9 +106,25 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Division $selected_division, Project $selected_project)
     {
-        //
+        $this->validator($request->all())->validate();
+
+
+
+        //'title', 'description', 'owner_id', 'project_due', 'project_started', 'project_complete'
+        $updatedData = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'creator_id' => auth()->user()->id,
+            'project_due' => $request->project_due,
+            'division_id' => $selected_division->id
+        ];
+
+        $selected_project->update($updatedData);
+
+        return redirect(route('TaskCenter.Division.Show', $selected_division));
+
     }
 
     /**
