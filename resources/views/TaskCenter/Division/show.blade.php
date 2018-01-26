@@ -104,6 +104,7 @@
                                         <th>Status</th>
                                         <th>Assigned</th>
                                         <th>Due</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -120,6 +121,18 @@
                                                 <td><span class="badge badge-{{ (is_null($task->status) ? 'default' : $task->status->color) }}">{{ (is_null($task->status) ? 'Unknown' : $task->status->title) }}</span></td>
                                                 <td>{{ ($task->user == null) ? 'Not Assigned' : $task->user->name }}</td>
                                                 <td>{{ ($task->project_due == '') ? 'Not Set' : $task->project_due }}</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-square btn-primary no-radius" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        @if($selected_task->project_started == '')
+                                                            <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-play"></i></a>
+                                                        @else
+                                                            <a class="btn btn-square btn-yellow no-radius" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-pause"></i></a>
+                                                        @endif
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif
