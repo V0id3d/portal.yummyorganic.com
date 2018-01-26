@@ -35,16 +35,15 @@
                                             <div class="invalid-feedback">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
+                                </div>
 
-
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <input type="text" data-provide="datepicker"  class="form-control{{ $errors->has('project_due') ? ' is-invalid' : '' }}" id="project_due" name="project_due" value="{{ old('project_due', $selected_project->project_due) }}">
-                                            <label>Project Due</label>
-                                            @if ($errors->has('project_due'))
-                                                <div class="invalid-feedback">{{ $errors->first('project_due') }}</div>
-                                            @endif
-                                        </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" data-provide="datepicker"  class="form-control{{ $errors->has('project_due') ? ' is-invalid' : '' }}" id="project_due" name="project_due" value="{{ old('project_due', $selected_project->project_due) }}">
+                                        <label>Project Due</label>
+                                        @if ($errors->has('project_due'))
+                                            <div class="invalid-feedback">{{ $errors->first('project_due') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
