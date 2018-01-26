@@ -123,13 +123,13 @@
                                                 <td>{{ ($task->project_due == '') ? 'Not Set' : $task->project_due }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a class="btn btn-square btn-primary no-radius btn-sm" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
+                                                        <a class="btn btn-primary no-radius btn-xs" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
                                                     </div>
                                                     <div class="btn-group">
                                                         @if($task->project_started == '')
-                                                            <a class="btn btn-square btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-play"></i></a>
+                                                            <a class="btn btn-success no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-play"></i></a>
                                                         @else
-                                                            <a class="btn btn-square btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-pause"></i></a>
+                                                            <a class="btn btn-yellow no-radius btn-xs" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $project, $task]) }}"><i class="fa fa-pause"></i></a>
                                                         @endif
                                                     </div>
                                                 </td>
