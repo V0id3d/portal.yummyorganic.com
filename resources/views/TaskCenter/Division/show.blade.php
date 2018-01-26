@@ -94,11 +94,11 @@
                                 </h4>
                                 <div class="btn-group">
                                     @if($project->project_started == '')
-                                        <a class="btn btn-xs btn-success no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-play"></i></a>
+                                        <a class="btn btn-xs btn-success no-radius btn-outline" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-play"></i></a>
                                     @else
-                                        <a class="btn btn-xs btn-yellow no-radius" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-pause"></i></a>
+                                        <a class="btn btn-xs btn-yellow no-radius btn-outline" href="{{ route('TaskCenter.Project.ToggleStart', [$selected_division, $project]) }}"><i class="fa fa-pause"></i></a>
                                     @endif
-                                    <a href="{{ route('TaskCenter.Project.Edit', [$selected_division, $project]) }}" class="btn btn-xs btn-primary no-radius"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('TaskCenter.Project.Edit', [$selected_division, $project]) }}" class="btn btn-xs btn-primary no-radius btn-outline"><i class="fa fa-pencil"></i></a>
                                 </div>
                             </div>
 
@@ -134,8 +134,8 @@
                                                 <td>{{ ($task->project_due == '') ? 'Not Set' : $task->project_due }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a class="btn btn-primary no-radius btn-xs" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
-                                                        <a class="btn btn-primary no-radius btn-xs" href="{{ route('TaskCenter.Task.Show', [$selected_division, $project, $task]) }}"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-primary no-radius btn-xs btn-outline" href="{{ route('TaskCenter.Task.Edit', [$selected_division, $project, $task]) }}"><i class="fa fa-pencil"></i></a>
+                                                        <a class="btn btn-primary no-radius btn-xs btn-outline" href="{{ route('TaskCenter.Task.Show', [$selected_division, $project, $task]) }}"><i class="fa fa-eye"></i></a>
                                                     </div>
                                                     {{--<div class="btn-group">--}}
                                                         {{--@if($task->project_started == '')--}}
