@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="card card-shadowed form-type-material">
                     <header class="card-header">
-                        <h4 class="card-title"><strong>Show</strong> Task <span class="badge badge-{{ (is_null($selected_task->status) ? 'default' : $selected_task->status->color) }}">{{ (is_null($selected_task->status) ? 'Unknown' : $selected_task->status->title) }}</span></h4>
+                        <h4 class="card-title"><strong>Show</strong> Task @if($selected_task->project_complete != '')<span class="badge badge-{{ (is_null($selected_task->status) ? 'default' : $selected_task->status->color) }}">{{ (is_null($selected_task->status) ? 'Unknown' : $selected_task->status->title) }}</span>@endif</h4>
                     </header>
 
                     <div class="card-body">
