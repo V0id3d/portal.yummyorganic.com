@@ -84,9 +84,9 @@
                     <footer class="card-footer text-right p-0">
                         <div class="btn-group">
                             @if($selected_task->project_started == '')
-                                <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-play"></i></a>
+                                <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Task.ToggleComplete', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-check-square-o"></i></a>
                             @else
-                                <a class="btn btn-square btn-yellow no-radius" href="{{ route('TaskCenter.Task.ToggleStart', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-pause"></i></a>
+                                <a class="btn btn-square btn-danger no-radius" href="{{ route('TaskCenter.Task.ToggleComplete', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-square-o"></i></a>
                             @endif
                             <a href="{{ route('TaskCenter.Task.Edit', [$selected_division, $selected_project, $selected_task]) }}" class="btn btn-square btn-primary no-radius"><i class="fa fa-pencil"></i></a>
                         </div>

@@ -18,7 +18,7 @@
 
     <div class="main-content" style="padding-top: 0;">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="row no-gutters py-2">
 

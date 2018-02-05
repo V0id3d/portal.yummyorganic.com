@@ -166,4 +166,15 @@ class TaskController extends Controller
         return redirect()->back();
 
     }
+
+    public function toggleComplete(Division $selected_division, Project $selected_project, Task $selected_task)
+    {
+        if($selected_task->project_completed == ''){
+            $selected_task->update(['project_complete' => now()]);
+            return redirect()->back();
+        }
+        $selected_task->update(['project_complete' => '']);
+        return redirect()->back();
+
+    }
 }

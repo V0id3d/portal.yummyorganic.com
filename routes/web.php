@@ -48,6 +48,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
                     Route::get('/{selected_task}/show', 'TaskCenter\TaskController@show')->name('TaskCenter.Task.Show');
                     Route::patch('/{selected_task}/edit', 'TaskCenter\TaskController@update')->name('TaskCenter.Task.Update');
                     Route::get('/{selected_task}/toggle', 'TaskCenter\TaskController@toggleStart')->name('TaskCenter.Task.ToggleStart');
+                    Route::get('/{selected_task}/complete', 'TaskCenter\TaskController@toggleComplete')->name('TaskCenter.Task.ToggleComplete');
+
                 });
             });
         });
