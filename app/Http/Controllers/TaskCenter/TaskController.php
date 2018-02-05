@@ -169,7 +169,7 @@ class TaskController extends Controller
 
     public function toggleComplete(Division $selected_division, Project $selected_project, Task $selected_task)
     {
-        if($selected_task->project_completed == ''){
+        if($selected_task->project_complete == ''){
             $selected_task->update(['project_complete' => now()]);
             return redirect()->back();
         }
