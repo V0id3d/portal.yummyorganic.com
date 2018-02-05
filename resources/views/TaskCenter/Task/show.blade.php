@@ -83,7 +83,7 @@
                     </div>
                     <footer class="card-footer text-right p-0">
                         <div class="btn-group">
-                            @if($selected_task->project_started == '')
+                            @if($selected_task->project_complete == '')
                                 <a class="btn btn-square btn-success no-radius" href="{{ route('TaskCenter.Task.ToggleComplete', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-check-square-o"></i></a>
                             @else
                                 <a class="btn btn-square btn-danger no-radius" href="{{ route('TaskCenter.Task.ToggleComplete', [$selected_division, $selected_project, $selected_task]) }}"><i class="fa fa-square-o"></i></a>
