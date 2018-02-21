@@ -10,6 +10,15 @@ class Brand extends Model implements HasMedia
 {
     use HasMediaTrait;
 
+    protected $fillable = [
+        'slug', 'name', 'description', 'active'
+    ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public static function last()
     {
         return static::all()->last();

@@ -124,4 +124,23 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             Route::delete('/{selected_permission}/delete', 'UserCenter\PermissionsController@destroy')->name('UserCenter.Permissions.Delete');
         });
     });
+    Route::prefix('productcenter')->group(function () {
+        Route::get('/dashboard', 'ProductCenter\CenterController@index')->name('ProductCenter.Index');
+        Route::prefix('brand')->group(function () {
+            Route::get('/', 'ProductCenter\BrandController@index')->name('ProductCenter.Brand.Index');
+            Route::get('/create', 'ProductCenter\BrandController@create')->name('ProductCenter.Brand.Create');
+            Route::post('/create', 'ProductCenter\BrandController@store')->name('ProductCenter.Brand.Store');
+            Route::get('/{selected_brand}/edit', 'ProductCenter\BrandController@edit')->name('ProductCenter.Brand.Edit');
+            Route::get('/{selected_brand}/show', 'ProductCenter\BrandController@show')->name('ProductCenter.Brand.Show');
+            Route::patch('/{selected_brand}/edit', 'ProductCenter\BrandController@update')->name('ProductCenter.Brand.Update');
+        });
+        Route::prefix('type')->group(function () {
+            Route::get('/', 'ProductCenter\TypeController@index')->name('ProductCenter.Type.Index');
+            Route::get('/create', 'ProductCenter\TypeController@create')->name('ProductCenter.Type.Create');
+            Route::post('/create', 'ProductCenter\TypeController@store')->name('ProductCenter.Type.Store');
+            Route::get('/{selected_type}/edit', 'ProductCenter\TypeController@edit')->name('ProductCenter.Type.Edit');
+            Route::get('/{selected_type}/show', 'ProductCenter\TypeController@show')->name('ProductCenter.Type.Show');
+            Route::patch('/{selected_type}/edit', 'ProductCenter\TypeController@update')->name('ProductCenter.Type.Update');
+        });
+    });
 });

@@ -4,7 +4,7 @@
     <header class="header no-border">
         <div class="header-info">
             <div class="left">
-                <h2 class="header-title"><strong>Task Center</strong> Dashboard</h2>
+                <h2 class="header-title"><strong>Product Center</strong> Dashboard</h2>
             </div>
 
             <div class="right gap-items-2">
@@ -20,27 +20,29 @@
             <div class="col-md-6">
                 <div class="card card-hover-shadow">
                     <h4 class="card-title">
-                        <strong>Status Messages</strong>
+                        <strong>Brands</strong>
                     </h4>
 
                     <div class="card-body">
                         <table class="table" data-provide="selectall">
                             <thead>
                             <tr>
+                                <th>Slug</th>
                                 <th>Name</th>
-                                <th>Color</th>
+                                <th>Description</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if($statusList->isEmpty())
+                            @if($brandList->isEmpty())
                                 <tr>
-                                    <td colspan="100%" class="text-center">No Status Messages</td>
+                                    <td colspan="100%" class="text-center">No Brands</td>
                                 </tr>
                             @else
-                                @foreach($statusList as $status)
+                                @foreach($brandList as $brand)
                                     <tr>
-                                        <td><a href="{{ route('TaskCenter.Status.Edit', $status) }}">{{ $status->title }}</a></td>
-                                        <td><span class="badge badge-dot badge-{{$status->color}}"></span></td>
+                                        <td>{{ $brand->slug }}</td>
+                                        <td><a href="{{ route('ProductCenter.Brand.Edit', $brand) }}">{{ $brand->name }}</a></td>
+                                        <td>{{ $brand->description }}</td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -50,7 +52,7 @@
                     </div>
                     <footer class="card-footer text-right p-0">
                         <div class="btn-group">
-                            <a class="btn btn-square btn-primary no-radius" href="{{ route('TaskCenter.Status.Create') }}"><i class="fa fa-plus"></i></a>
+                            <a class="btn btn-square btn-primary no-radius" href="{{ route('ProductCenter.Brand.Create') }}"><i class="fa fa-plus"></i></a>
                         </div>
                     </footer>
                 </div>
@@ -58,7 +60,7 @@
             <div class="col-md-6">
                 <div class="card card-hover-shadow">
                     <h4 class="card-title">
-                        <strong>Divisions</strong>
+                        <strong>Types</strong>
                     </h4>
 
                     <div class="card-body">
@@ -70,15 +72,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if($divisionList->isEmpty())
+                            @if($typeList->isEmpty())
                                 <tr>
-                                    <td colspan="100%" class="text-center">No Divisions</td>
+                                    <td colspan="100%" class="text-center">No Types</td>
                                 </tr>
                             @else
-                                @foreach($divisionList as $division)
+                                @foreach($typeList as $type)
                                     <tr>
-                                        <td><a href="{{ route('TaskCenter.Division.Show', $division) }}">{{ $division->title }}</a></td>
-                                        <td>{{ (is_null($division->description) || $division->description == '') ? 'Not Set' : $division->description }}</td>
+                                        <td><a href="{{ route('ProductCenter.Type.Edit', $type) }}">{{ $type->name }}</a></td>
+                                        <td>{{ $type->description }}</td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -88,7 +90,7 @@
                     </div>
                     <footer class="card-footer text-right p-0">
                         <div class="btn-group">
-                            <a class="btn btn-square btn-primary no-radius" href="{{ route('TaskCenter.Division.Create') }}"><i class="fa fa-plus"></i></a>
+                            <a class="btn btn-square btn-primary no-radius" href="{{ route('ProductCenter.Type.Create') }}"><i class="fa fa-plus"></i></a>
                         </div>
                     </footer>
                 </div>

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\ProductCenter;
 
-use App\ProductCenter\Brand;
 use App\ProductCenter\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CenterController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,7 @@ class CenterController extends Controller
      */
     public function index()
     {
-        $brandList = Brand::all();
-        $typeList = Type::all();
-
-        return view('ProductCenter.index', compact('brandList', 'typeList'));
+        //
     }
 
     /**
@@ -29,7 +25,7 @@ class CenterController extends Controller
      */
     public function create()
     {
-        //
+        return view('ProductCenter.Type.create');
     }
 
     /**
@@ -40,7 +36,12 @@ class CenterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newType = Type::create([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
+        return redirect(route('ProductCenter.Index'));
     }
 
     /**

@@ -17,12 +17,53 @@
 
             <!-- Single Navigation Item -->
             <li class="menu-item">
-                <a class="menu-link" href="../dashboard/general.html">
+                <a class="menu-link" href="#">
                     <span class="icon fa fa-home"></span>
                     <span class="title">Dashboard</span>
                 </a>
             </li>
             <!-- End Single Navigation -->
+
+            <!-- Multi Level Navigation Item [Product Center] -->
+            <li class="menu-item {{ setOpen('admin/productcenter') }}">
+                <a class="menu-link" href="#">
+                    <span class="icon fa fa-barcode"></span>
+                    <span class="title">Product Center</span>
+                    <span class="arrow"></span>
+                </a>
+
+                <ul class="menu-submenu">
+
+                    <li class="menu-item {{ setActive('admin/productcenter/dashboard') }}">
+                        <a class="menu-link" href="{{ route('ProductCenter.Index') }}">
+                            <span class="dot"></span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-category">Brands</li>
+
+                    @foreach(App\ProductCenter\Brand::all() as $brand)
+
+                        <li class="menu-item {{ setActive('admin/taskcenter/brand/' . $brand->id ) }}">
+                            <a class="menu-link" href="{{ route('ProductCenter.Brand.Show', $brand) }}">
+                                <span class="dot"></span>
+                                <span class="title">{{ $brand->name }}</span>
+                            </a>
+                        </li>
+
+                    @endforeach
+
+                    {{--<li class="menu-item">--}}
+                    {{--<a class="menu-link" href="{{ route('TaskCenter.Division.Create') }}">--}}
+                    {{--<span class="dot"></span>--}}
+                    {{--<span class="title">Add Division</span>--}}
+                    {{--</a>--}}
+                    {{--</li>--}}
+
+                </ul>
+            </li>
+            <!-- END Multi Level Navigation Item -->
 
 
             <!-- Multi Level Navigation Item [Product Center] -->
